@@ -1,0 +1,258 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_pricelist_change_notify
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20260908\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 07:31+0000\n"
+"PO-Revision-Date: 2026-09-18 07:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+msgid "All products"
+msgstr "Todos los productos"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__applied_on
+msgid "Applied on"
+msgstr "Aplicado en"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,help:product_pricelist_change_notify.field_product_pricelist__price_change_notify_user_ids
+msgid ""
+"At the end of the day, these users receive a summary of the price changes "
+"made on this pricelist. If they have email notifications enabled, it reaches"
+" them by email; otherwise, only as an internal Odoo notification."
+msgstr ""
+"Al final del día, estos usuarios reciben un resumen de los cambios de precio"
+" de esta tarifa. Si tienen activado el envío de notificaciones por email, "
+"les llega por correo; si no, solo como notificación interna de Odoo."
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__change_date
+msgid "Change date"
+msgstr "Fecha del cambio"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields.selection,name:product_pricelist_change_notify.selection__product_pricelist_change_log__change_type__write
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Changed"
+msgstr "Cambio"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields.selection,name:product_pricelist_change_notify.selection__product_pricelist_change_log__change_type__create
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Created"
+msgstr "Alta"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields.selection,name:product_pricelist_change_notify.selection__product_pricelist_change_log__change_type__unlink
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Deleted"
+msgstr "Baja"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+msgid "Field"
+msgstr "Campo"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__field_label
+msgid "Field Label"
+msgstr "Etiqueta del campo"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__field_name
+msgid "Field Name"
+msgstr "Nombre del campo"
+
+#. module: product_pricelist_change_notify
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__id
+msgid "ID"
+msgstr ""
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__new_value
+msgid "New Value"
+msgstr "Valor nuevo"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+msgid "New price"
+msgstr "Precio nuevo"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_item.py:0
+msgid ""
+"New price rule on pricelist <strong>%(pricelist)s</strong>: %(field)s = "
+"%(value)s"
+msgstr ""
+"Nueva regla de precio en tarifa <strong>%(pricelist)s</strong>: %(field)s = "
+"%(value)s"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__notified
+msgid "Notified"
+msgstr "Notificado"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__notified_date
+msgid "Notified Date"
+msgstr "Fecha de notificación"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist__price_change_notify_user_ids
+msgid "Notify price changes to"
+msgstr "Notificar cambios de precio a"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__old_value
+msgid "Old Value"
+msgstr "Valor anterior"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+msgid "Old price"
+msgstr "Precio anterior"
+
+#. module: product_pricelist_change_notify
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Pending notification"
+msgstr "Pendientes de notificar"
+
+#. module: product_pricelist_change_notify
+#: model:ir.actions.act_window,name:product_pricelist_change_notify.action_pricelist_change_log
+#: model:ir.ui.menu,name:product_pricelist_change_notify.menu_pricelist_change_log
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_list
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Price change history"
+msgstr "Histórico de cambios de precio"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_item.py:0
+msgid ""
+"Price change on pricelist <strong>%(pricelist)s</strong>: %(field)s from "
+"%(old)s to %(new)s"
+msgstr ""
+"Cambio de precio en tarifa <strong>%(pricelist)s</strong>: %(field)s de "
+"%(old)s a %(new)s"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+msgid "Price changes - %s"
+msgstr "Cambios de precio - %s"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_item.py:0
+msgid ""
+"Price rule deleted on pricelist <strong>%(pricelist)s</strong>: %(field)s = "
+"%(value)s"
+msgstr ""
+"Regla de precio eliminada en tarifa <strong>%(pricelist)s</strong>: "
+"%(field)s = %(value)s"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model,name:product_pricelist_change_notify.model_product_pricelist
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__pricelist_id
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Pricelist"
+msgstr "Tarifa"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model,name:product_pricelist_change_notify.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "Regla de tarifa"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model,name:product_pricelist_change_notify.model_product_pricelist_change_log
+msgid "Pricelist price change history"
+msgstr "Histórico de cambios de precio de tarifa"
+
+#. module: product_pricelist_change_notify
+#: model:ir.actions.server,name:product_pricelist_change_notify.ir_cron_send_price_change_digest_ir_actions_server
+msgid "Pricelists: send daily price change digest"
+msgstr "Tarifas: enviar resumen diario de cambios de precio"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__categ_id
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__product_tmpl_id
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+msgid "Today's price changes on pricelist <strong>%s</strong>:"
+msgstr "Cambios de precio de hoy en la tarifa <strong>%s</strong>:"
+
+#. module: product_pricelist_change_notify
+#. odoo-python
+#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__change_type
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "Type"
+msgstr "Tipo"
+
+#. module: product_pricelist_change_notify
+#: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__user_id
+#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
+msgid "User"
+msgstr "Usuario"
