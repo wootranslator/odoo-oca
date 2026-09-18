@@ -6,4 +6,4 @@
   `_build_digest_rows` is rendered once in the language of the user
   running the cron, so all recipients on a pricelist get the same
   language regardless of their own preference.
-- Port to Odoo 19.0 and 20.0.
+- Port to Odoo 20.0.
