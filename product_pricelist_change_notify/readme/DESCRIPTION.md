@@ -1,5 +1,5 @@
 This module keeps track of price changes made on pricelist items
-(``product.pricelist.item``): rule creation, changes to the price fields
+(`product.pricelist.item`): rule creation, changes to the price fields
 and rule deletion.
 
 Every change is logged with the previous value, the new value, the user
