@@ -3,10 +3,10 @@
     <record id="view_pricelist_form_change_notify" model="ir.ui.view">
         <field name="name">product.pricelist.form.change.notify</field>
         <field name="model">product.pricelist</field>
-        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="inherit_id" ref="product.product_pricelist_view" />
         <field name="arch" type="xml">
             <field name="country_group_ids" position="after">
-                <field name="price_change_notify_user_ids" widget="many2many_tags"/>
+                <field name="price_change_notify_user_ids" widget="many2many_tags" />
             </field>
         </field>
     </record>

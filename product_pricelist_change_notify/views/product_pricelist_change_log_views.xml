@@ -4,16 +4,21 @@
         <field name="name">product.pricelist.change.log.list</field>
         <field name="model">product.pricelist.change.log</field>
         <field name="arch" type="xml">
-            <list string="Price change history" create="false" edit="false" delete="false">
-                <field name="change_date"/>
-                <field name="change_type"/>
-                <field name="pricelist_id"/>
-                <field name="product_id"/>
-                <field name="field_label"/>
-                <field name="old_value"/>
-                <field name="new_value"/>
-                <field name="user_id"/>
-                <field name="notified"/>
+            <list
+                string="Price change history"
+                create="false"
+                edit="false"
+                delete="false"
+            >
+                <field name="change_date" />
+                <field name="change_type" />
+                <field name="pricelist_id" />
+                <field name="product_id" />
+                <field name="field_label" />
+                <field name="old_value" />
+                <field name="new_value" />
+                <field name="user_id" />
+                <field name="notified" />
             </list>
         </field>
     </record>
@@ -23,18 +28,46 @@
         <field name="model">product.pricelist.change.log</field>
         <field name="arch" type="xml">
             <search string="Price change history">
-                <field name="pricelist_id"/>
-                <field name="product_id"/>
-                <field name="user_id"/>
-                <filter name="filter_pending" string="Pending notification" domain="[('notified', '=', False)]"/>
-                <separator/>
-                <filter name="filter_created" string="Created" domain="[('change_type', '=', 'create')]"/>
-                <filter name="filter_changed" string="Changed" domain="[('change_type', '=', 'write')]"/>
-                <filter name="filter_deleted" string="Deleted" domain="[('change_type', '=', 'unlink')]"/>
+                <field name="pricelist_id" />
+                <field name="product_id" />
+                <field name="user_id" />
+                <filter
+                    name="filter_pending"
+                    string="Pending notification"
+                    domain="[('notified', '=', False)]"
+                />
+                <separator />
+                <filter
+                    name="filter_created"
+                    string="Created"
+                    domain="[('change_type', '=', 'create')]"
+                />
+                <filter
+                    name="filter_changed"
+                    string="Changed"
+                    domain="[('change_type', '=', 'write')]"
+                />
+                <filter
+                    name="filter_deleted"
+                    string="Deleted"
+                    domain="[('change_type', '=', 'unlink')]"
+                />
                 <group expand="0" string="Group By">
-                    <filter name="group_by_pricelist" string="Pricelist" context="{'group_by': 'pricelist_id'}"/>
-                    <filter name="group_by_type" string="Type" context="{'group_by': 'change_type'}"/>
-                    <filter name="group_by_user" string="User" context="{'group_by': 'user_id'}"/>
+                    <filter
+                        name="group_by_pricelist"
+                        string="Pricelist"
+                        context="{'group_by': 'pricelist_id'}"
+                    />
+                    <filter
+                        name="group_by_type"
+                        string="Type"
+                        context="{'group_by': 'change_type'}"
+                    />
+                    <filter
+                        name="group_by_user"
+                        string="User"
+                        context="{'group_by': 'user_id'}"
+                    />
                 </group>
             </search>
         </field>
@@ -47,10 +80,12 @@
         <field name="context">{'search_default_filter_pending': 1}</field>
     </record>
 
-    <menuitem id="menu_pricelist_change_log"
-              name="Price change history"
-              parent="sale.prod_config_main"
-              action="action_pricelist_change_log"
-              groups="sales_team.group_sale_manager"
-              sequence="40"/>
+    <menuitem
+        id="menu_pricelist_change_log"
+        name="Price change history"
+        parent="sale.prod_config_main"
+        action="action_pricelist_change_log"
+        groups="sales_team.group_sale_manager"
+        sequence="40"
+    />
 </odoo>
