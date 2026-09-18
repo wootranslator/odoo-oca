@@ -11,6 +11,7 @@ the [Odoo Community Association](https://odoo-community.org/) repositories:
 
 | Branch | Odoo version | Status |
 | ------ | ------------ | ------ |
+| [17.0](https://github.com/wootranslator/odoo-oca/tree/17.0) | 17.0 | Maintained |
 | [18.0](https://github.com/wootranslator/odoo-oca/tree/18.0) | 18.0 | Maintained |
 | [19.0](https://github.com/wootranslator/odoo-oca/tree/19.0) | 19.0 | Maintained |
 | 20.0 | 20.0 | Planned |
