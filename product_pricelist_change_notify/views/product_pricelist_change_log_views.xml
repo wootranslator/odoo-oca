@@ -31,7 +31,7 @@
                 <filter name="filter_created" string="Created" domain="[('change_type', '=', 'create')]"/>
                 <filter name="filter_changed" string="Changed" domain="[('change_type', '=', 'write')]"/>
                 <filter name="filter_deleted" string="Deleted" domain="[('change_type', '=', 'unlink')]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter name="group_by_pricelist" string="Pricelist" context="{'group_by': 'pricelist_id'}"/>
                     <filter name="group_by_type" string="Type" context="{'group_by': 'change_type'}"/>
                     <filter name="group_by_user" string="User" context="{'group_by': 'user_id'}"/>
