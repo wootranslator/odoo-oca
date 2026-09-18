@@ -85,13 +85,16 @@ class PricelistItem(models.Model):
         log_vals_list = []
         for record in records.filtered("pricelist_id"):
             field_name = record._get_representative_price_field()
-            vals, field_label, _fold, formatted_new = (
-                record._build_price_change_log_vals(
-                    "create",
-                    field_name,
-                    None,
-                    record[field_name],
-                )
+            (
+                vals,
+                field_label,
+                _fold,
+                formatted_new,
+            ) = record._build_price_change_log_vals(
+                "create",
+                field_name,
+                None,
+                record[field_name],
             )
             log_vals_list.append(vals)
 
@@ -137,13 +140,16 @@ class PricelistItem(models.Model):
                 if old_value == new_value:
                     continue
 
-                vals_log, field_label, formatted_old, formatted_new = (
-                    record._build_price_change_log_vals(
-                        "write",
-                        field_name,
-                        old_value,
-                        new_value,
-                    )
+                (
+                    vals_log,
+                    field_label,
+                    formatted_old,
+                    formatted_new,
+                ) = record._build_price_change_log_vals(
+                    "write",
+                    field_name,
+                    old_value,
+                    new_value,
                 )
                 log_vals_list.append(vals_log)
 
@@ -175,13 +181,16 @@ class PricelistItem(models.Model):
         entries = []
         for record in self.filtered("pricelist_id"):
             field_name = record._get_representative_price_field()
-            vals, field_label, formatted_old, _fnew = (
-                record._build_price_change_log_vals(
-                    "unlink",
-                    field_name,
-                    record[field_name],
-                    None,
-                )
+            (
+                vals,
+                field_label,
+                formatted_old,
+                _fnew,
+            ) = record._build_price_change_log_vals(
+                "unlink",
+                field_name,
+                record[field_name],
+                None,
             )
             target = record._price_change_target()
             chatter = Markup(
