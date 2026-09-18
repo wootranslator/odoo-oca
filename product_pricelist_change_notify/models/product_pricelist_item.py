@@ -100,7 +100,8 @@ class PricelistItem(models.Model):
                 target.message_post(
                     body=Markup(
                         _(
-                            "New price rule on pricelist <strong>%(pricelist)s</strong>: %(field)s = %(value)s"
+                            "New price rule on pricelist"
+                            " <strong>%(pricelist)s</strong>: %(field)s = %(value)s"
                         )
                     )
                     % {
@@ -151,8 +152,9 @@ class PricelistItem(models.Model):
                     target.message_post(
                         body=Markup(
                             _(
-                                "Price change on pricelist <strong>%(pricelist)s</strong>: "
-                                "%(field)s from %(old)s to %(new)s"
+                                "Price change on pricelist"
+                                " <strong>%(pricelist)s</strong>: %(field)s"
+                                " from %(old)s to %(new)s"
                             )
                         )
                         % {
@@ -184,7 +186,8 @@ class PricelistItem(models.Model):
             target = record._price_change_target()
             chatter = Markup(
                 _(
-                    "Price rule deleted on pricelist <strong>%(pricelist)s</strong>: %(field)s = %(value)s"
+                    "Price rule deleted on pricelist <strong>%(pricelist)s</strong>:"
+                    " %(field)s = %(value)s"
                 )
             ) % {
                 "pricelist": record.pricelist_id.display_name,
