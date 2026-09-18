@@ -98,9 +98,17 @@ class PricelistItem(models.Model):
             target = record._price_change_target()
             if target:
                 target.message_post(
+                    # Not using self.env._(): it only auto-escapes substituted
+                    # values when translation.get() falls back to the (Markup)
+                    # source, which only happens for en_US. For any other
+                    # language the catalog returns a plain str, so `%` would
+                    # interpolate pricelist_id.display_name/field_label
+                    # unescaped into this HTML body. Markup(_(...)) % {...}
+                    # escapes them unconditionally, regardless of language.
                     body=Markup(
-                        _(
-                            "New price rule on pricelist <strong>%(pricelist)s</strong>: %(field)s = %(value)s"
+                        _(  # pylint: disable=prefer-env-translation
+                            "New price rule on pricelist"
+                            " <strong>%(pricelist)s</strong>: %(field)s = %(value)s"
                         )
                     )
                     % {
@@ -149,10 +157,13 @@ class PricelistItem(models.Model):
                 target = record._price_change_target()
                 if target:
                     target.message_post(
+                        # See create() above for why this uses
+                        # Markup(_(...)) % {...} instead of self.env._().
                         body=Markup(
-                            _(
-                                "Price change on pricelist <strong>%(pricelist)s</strong>: "
-                                "%(field)s from %(old)s to %(new)s"
+                            _(  # pylint: disable=prefer-env-translation
+                                "Price change on pricelist"
+                                " <strong>%(pricelist)s</strong>: %(field)s"
+                                " from %(old)s to %(new)s"
                             )
                         )
                         % {
@@ -182,9 +193,12 @@ class PricelistItem(models.Model):
                 )
             )
             target = record._price_change_target()
+            # See create() above for why this uses Markup(_(...)) % {...}
+            # instead of self.env._().
             chatter = Markup(
-                _(
-                    "Price rule deleted on pricelist <strong>%(pricelist)s</strong>: %(field)s = %(value)s"
+                _(  # pylint: disable=prefer-env-translation
+                    "Price rule deleted on pricelist <strong>%(pricelist)s</strong>:"
+                    " %(field)s = %(value)s"
                 )
             ) % {
                 "pricelist": record.pricelist_id.display_name,

@@ -5,7 +5,6 @@ import logging
 from markupsafe import Markup
 
 from odoo import api, fields, models
-from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
@@ -41,7 +40,7 @@ class PricelistChangeLog(models.Model):
     old_value = fields.Char()
     new_value = fields.Char()
 
-    user_id = fields.Many2one("res.users", string="User", required=True)
+    user_id = fields.Many2one("res.users", required=True)
     change_date = fields.Datetime(
         string="Change date", required=True, default=fields.Datetime.now
     )
@@ -55,7 +54,7 @@ class PricelistChangeLog(models.Model):
             self.product_id.display_name
             or self.product_tmpl_id.display_name
             or self.categ_id.display_name
-            or _("All products")
+            or self.env._("All products")
         )
 
     def _build_digest_rows(self):

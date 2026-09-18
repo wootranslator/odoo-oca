@@ -1,5 +1,8 @@
 # odoo-oca
 
+[![Pre-commit Status](https://github.com/wootranslator/odoo-oca/actions/workflows/pre-commit.yml/badge.svg?branch=19.0)](https://github.com/wootranslator/odoo-oca/actions/workflows/pre-commit.yml?query=branch%3A19.0)
+[![Build Status](https://github.com/wootranslator/odoo-oca/actions/workflows/test.yml/badge.svg?branch=19.0)](https://github.com/wootranslator/odoo-oca/actions/workflows/test.yml?query=branch%3A19.0)
+
 Odoo modules maintained in the OCA style (module layout, README generation,
 per-version branches) by [wootranslator](https://github.com/wootranslator).
 

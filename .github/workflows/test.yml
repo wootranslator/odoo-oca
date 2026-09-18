@@ -1,42 +1,84 @@
 name: tests
 
 on:
-    pull_request:
-    push:
-        branches:
-            - "19.0"
+  pull_request:
+    branches:
+      - "19.0*"
+  push:
+    branches:
+      - "19.0"
+      - "19.0-ocabot-*"
 
-env:
-    ODOO_VERSION: "19.0"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        services:
-            postgres:
-                image: postgres:15
-                env:
-                    POSTGRES_USER: odoo
-                    POSTGRES_PASSWORD: odoo
-                    POSTGRES_DB: postgres
-                ports:
-                    - 5432:5432
-                options: >-
-                    --health-cmd pg_isready
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
-        steps:
-            - uses: actions/checkout@v4
-
-            - name: Run module tests inside the official Odoo image
-              run: |
-                  docker run --rm --network host \
-                    -e HOST=localhost -e USER=odoo -e PASSWORD=odoo \
-                    -v "${{ github.workspace }}:/mnt/extra-addons" \
-                    "odoo:${{ env.ODOO_VERSION }}" \
-                    odoo -d test_ci \
-                      --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons \
-                      -i product_pricelist_change_notify \
-                      --test-tags=/product_pricelist_change_notify \
-                      --stop-after-init --log-level=test
+  unreleased-deps:
+    runs-on: ubuntu-latest
+    name: Detect unreleased dependencies
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          for reqfile in requirements.txt test-requirements.txt ; do
+              if [ -f ${reqfile} ] ; then
+                  result=0
+                  # reject non-comment lines that contain a / (i.e. URLs, relative paths)
+                  grep "^[^#].*/" ${reqfile} || result=$?
+                  if [ $result -eq 0 ] ; then
+                      echo "Unreleased dependencies found in ${reqfile}."
+                      exit 1
+                  fi
+              fi
+          done
+  test:
+    runs-on: ubuntu-22.04
+    container: ${{ matrix.container }}
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - container: ghcr.io/oca/oca-ci/py3.10-odoo19.0:latest
+            name: test with Odoo
+          - container: ghcr.io/oca/oca-ci/py3.10-ocb19.0:latest
+            name: test with OCB
+            makepot: "true"
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: odoo
+        ports:
+          - 5432:5432
+    env:
+      OCA_ENABLE_CHECKLOG_ODOO: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install addons and dependencies
+        run: oca_install_addons
+      - name: Check licenses
+        run: manifestoo -d . check-licenses
+      - name: Check development status
+        run: manifestoo -d . check-dev-status --default-dev-status=Beta
+      - name: Initialize test db
+        run: oca_init_test_database
+      - name: Run tests
+        run: oca_run_tests
+      - name: Upload screenshots from JS tests
+        uses: actions/upload-artifact@v4
+        if: ${{ failure() }}
+        with:
+          name: Screenshots of failed JS tests - ${{ matrix.name }}${{ join(matrix.include) }}
+          path: /tmp/odoo_tests/${{ env.PGDATABASE }}
+          if-no-files-found: ignore
+      - uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Update .pot files
+        run: oca_export_and_push_pot https://x-access-token:${{ secrets.GIT_PUSH_TOKEN }}@github.com/${{ github.repository }}
+        if: ${{ matrix.makepot == 'true' && github.event_name == 'push' && github.repository_owner == 'wootranslator' }}
