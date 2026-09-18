@@ -14,9 +14,17 @@ the [Odoo Community Association](https://odoo-community.org/) repositories:
 
 ## Modules
 
-| Module | 18.0 | 19.0 | 20.0 |
-| ------ | :--: | :--: | :--: |
-| product_pricelist_change_notify | ✔ | ⏳ | ⏳ |
+<!-- prettier-ignore-start -->
+[//]: # (addons)
+
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[product_pricelist_change_notify](product_pricelist_change_notify/) | 18.0.1.1.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Track price changes on pricelist items and send a daily digest
+
+[//]: # (end addons)
+<!-- prettier-ignore-end -->
 
 ## Licenses
 
