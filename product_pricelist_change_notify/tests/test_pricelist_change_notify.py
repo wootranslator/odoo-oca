@@ -58,6 +58,39 @@ class TestPricelistChangeNotify(TransactionCase):
         )
         self.assertTrue(all(logs.mapped("notified")))
 
+    def test_cron_digest_uses_mail_template(self):
+        # Use a recipient different from self.env.user: message_notify()
+        # skips notifying the author of the action, so the cron (run as
+        # self.env.user) and the recipient must not be the same partner.
+        recipient = self.env["res.users"].create(
+            {
+                "name": "Digest Recipient",
+                "login": "digest_recipient_test",
+                "email": "digest_recipient_test@example.com",
+            }
+        )
+        self.pricelist.price_change_notify_user_ids = [(6, 0, [recipient.id])]
+        self.env["product.pricelist.item"].create(
+            {
+                "pricelist_id": self.pricelist.id,
+                "applied_on": "0_product_variant",
+                "product_id": self.product.id,
+                "compute_price": "fixed",
+                "fixed_price": 99.0,
+            }
+        )
+        messages_before = self.env["mail.message"].search([])
+
+        self.env["product.pricelist.change.log"]._cron_send_price_change_digest()
+
+        digest_message = self.env["mail.message"].search(
+            [("id", "not in", messages_before.ids)]
+        )
+        self.assertEqual(len(digest_message), 1)
+        self.assertIn(self.pricelist.display_name, digest_message.subject)
+        self.assertIn(self.product.display_name, digest_message.body)
+        self.assertIn("99.0", digest_message.body)
+
     def test_cron_digest_without_recipients_still_marks_notified(self):
         # No price_change_notify_user_ids set on the pricelist: the cron
         # must not fail and must still flag the logs as notified.

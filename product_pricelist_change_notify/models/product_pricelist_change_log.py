@@ -58,7 +58,12 @@ class PricelistChangeLog(models.Model):
             or _("All products")
         )
 
-    def _build_digest_body(self, pricelist):
+    def _build_digest_rows(self):
+        """Return the <tr> rows of the digest table, safely HTML-escaped.
+
+        Kept in Python (rather than inline in the mail.template) so every
+        interpolated value goes through Markup's automatic escaping.
+        """
         # Use fields_get() rather than the CHANGE_TYPES constant so the
         # selection labels come translated in the recipient's language.
         change_type_labels = dict(
@@ -74,7 +79,7 @@ class PricelistChangeLog(models.Model):
             "<td style='padding:4px 8px;border-bottom:1px solid #eee;'>{}</td>"
             "</tr>"
         )
-        rows = Markup("").join(
+        return Markup("").join(
             row_template.format(
                 change_type_labels.get(log.change_type, log.change_type),
                 log._get_target_display(),
@@ -85,33 +90,15 @@ class PricelistChangeLog(models.Model):
             for log in self
         )
 
-        body_template = Markup(
-            "<p>%s</p>"
-            "<table style='border-collapse:collapse;width:100%%;'>"
-            "<tr>"
-            "<th style='text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;'>%s</th>"
-            "<th style='text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;'>%s</th>"
-            "<th style='text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;'>%s</th>"
-            "<th style='text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;'>%s</th>"
-            "<th style='text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;'>%s</th>"
-            "</tr>%s</table>"
-        ) % (
-            Markup(_("Today's price changes on pricelist <strong>%s</strong>:"))
-            % pricelist.display_name,
-            _("Type"),
-            _("Product"),
-            _("Field"),
-            _("Old price"),
-            _("New price"),
-            rows,
-        )
-        return body_template
-
     @api.model
     def _cron_send_price_change_digest(self):
         pending_logs = self.search([("notified", "=", False)])
         if not pending_logs:
             return
+
+        template = self.env.ref(
+            "product_pricelist_change_notify.mail_template_price_change_digest"
+        )
 
         for pricelist, logs in pending_logs.grouped("pricelist_id").items():
             # Isolate each pricelist in a savepoint: if sending to one fails,
@@ -120,14 +107,19 @@ class PricelistChangeLog(models.Model):
                 with self.env.cr.savepoint():
                     recipient_users = pricelist.price_change_notify_user_ids
                     if recipient_users:
-                        body = logs._build_digest_body(pricelist)
+                        subject = template._render_field("subject", pricelist.ids)[
+                            pricelist.id
+                        ]
+                        body = template._render_field("body_html", pricelist.ids)[
+                            pricelist.id
+                        ]
                         # Sender from the company's real domain (with authenticated
                         # SMTP), not the odoobot@*.odoo.com address that goes to spam.
                         company = pricelist.company_id or self.env.company
                         email_from = company.email_formatted or company.email or None
                         self.env["mail.thread"].message_notify(
                             partner_ids=recipient_users.partner_id.ids,
-                            subject=_("Price changes - %s") % pricelist.display_name,
+                            subject=subject,
                             body=body,
                             email_from=email_from,
                         )

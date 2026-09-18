@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mail_template_price_change_digest" model="mail.template">
+        <field name="name">Pricelist: Price Change Digest</field>
+        <field name="model_id" ref="product.model_product_pricelist"/>
+        <field name="subject">Price changes - {{ object.display_name }}</field>
+        <field name="body_html" type="html">
+            <p>Today's price changes on pricelist <strong t-out="object.display_name"/>:</p>
+            <table style="border-collapse:collapse;width:100%;">
+                <tr>
+                    <th style="text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;">Type</th>
+                    <th style="text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;">Product</th>
+                    <th style="text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;">Field</th>
+                    <th style="text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;">Old price</th>
+                    <th style="text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;">New price</th>
+                </tr>
+                <t t-out="object.get_pending_price_change_digest_rows()"/>
+            </table>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>

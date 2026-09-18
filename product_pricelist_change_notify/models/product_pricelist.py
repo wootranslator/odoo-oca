@@ -15,3 +15,11 @@ class Pricelist(models.Model):
         "enabled, it reaches them by email; otherwise, only as an internal "
         "Odoo notification.",
     )
+
+    def get_pending_price_change_digest_rows(self):
+        """Table rows (safely escaped HTML) for the digest mail.template."""
+        self.ensure_one()
+        logs = self.env["product.pricelist.change.log"].search(
+            [("pricelist_id", "=", self.id), ("notified", "=", False)]
+        )
+        return logs._build_digest_rows()

@@ -3,7 +3,7 @@
 {
     "name": "Product Pricelist Change Notify",
     "summary": "Track price changes on pricelist items and send a daily digest",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.1.0",
     "category": "Sales/Sales",
     "website": "https://github.com/wootranslator/odoo-oca",
     "author": "Javier Sánchez de Pedro, Odoo Community Association (OCA)",
@@ -18,6 +18,7 @@
         "security/ir.model.access.csv",
         "views/product_pricelist_views.xml",
         "views/product_pricelist_change_log_views.xml",
+        "data/mail_template_data.xml",
         "data/ir_cron_data.xml",
     ],
     "development_status": "Beta",
