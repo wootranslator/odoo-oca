@@ -1,5 +1,3 @@
-- Make the cron interval and send time configurable instead of the fixed
-  daily run at 20:00.
 - Add a "no changes today" digest option per pricelist (currently
   pricelists with no changes are simply skipped).
 - Send the digest body in each recipient's own language. Right now
