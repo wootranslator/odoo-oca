@@ -4,12 +4,7 @@
         <field name="name">product.pricelist.change.log.list</field>
         <field name="model">product.pricelist.change.log</field>
         <field name="arch" type="xml">
-            <list
-                string="Price change history"
-                create="false"
-                edit="false"
-                delete="false"
-            >
+            <tree create="false" edit="false" delete="false">
                 <field name="change_date" />
                 <field name="change_type" />
                 <field name="pricelist_id" />
@@ -19,7 +14,7 @@
                 <field name="new_value" />
                 <field name="user_id" />
                 <field name="notified" />
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -76,7 +71,7 @@
     <record id="action_pricelist_change_log" model="ir.actions.act_window">
         <field name="name">Price change history</field>
         <field name="res_model">product.pricelist.change.log</field>
-        <field name="view_mode">list</field>
+        <field name="view_mode">tree</field>
         <field name="context">{'search_default_filter_pending': 1}</field>
     </record>
 

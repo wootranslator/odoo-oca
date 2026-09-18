@@ -6,8 +6,8 @@
         <field name="subject">Price changes - {{ object.display_name }}</field>
         <field name="body_html" type="html">
             <p>Today's price changes on pricelist <strong
-                t-out="object.display_name"
-            />:</p>
+                    t-out="object.display_name"
+                />:</p>
             <table style="border-collapse:collapse;width:100%;">
                 <tr>
                     <th
