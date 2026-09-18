@@ -4,10 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0-20260908\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-18 07:31+0000\n"
-"PO-Revision-Date: 2026-09-18 07:31+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +14,26 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_pricelist_change_notify
+#: model:mail.template,body_html:product_pricelist_change_notify.mail_template_price_change_digest
+msgid ""
+"<p>Today's price changes on pricelist <strong t-out=\"object.display_name\"></strong>:</p>\n"
+"            <table style=\"border-collapse:collapse;width:100%;\">\n"
+"                <tr>\n"
+"                    <th style=\"text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;\">Type</th>\n"
+"                    <th style=\"text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;\">Product</th>\n"
+"                    <th style=\"text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;\">Field</th>\n"
+"                    <th style=\"text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;\">Old price</th>\n"
+"                    <th style=\"text-align:left;padding:4px 8px;border-bottom:2px solid #ccc;\">New price</th>\n"
+"                </tr>\n"
+"                <t t-out=\"object.get_pending_price_change_digest_rows()\"></t>\n"
+"            </table>\n"
+"        "
+msgstr ""
+
+#. module: product_pricelist_change_notify
 #. odoo-python
 #: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
+#, python-format
 msgid "All products"
 msgstr ""
 
@@ -73,12 +89,6 @@ msgid "Display Name"
 msgstr ""
 
 #. module: product_pricelist_change_notify
-#. odoo-python
-#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
-msgid "Field"
-msgstr ""
-
-#. module: product_pricelist_change_notify
 #: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__field_label
 msgid "Field Label"
 msgstr ""
@@ -115,13 +125,8 @@ msgstr ""
 
 #. module: product_pricelist_change_notify
 #. odoo-python
-#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
-msgid "New price"
-msgstr ""
-
-#. module: product_pricelist_change_notify
-#. odoo-python
 #: code:addons/product_pricelist_change_notify/models/product_pricelist_item.py:0
+#, python-format
 msgid ""
 "New price rule on pricelist <strong>%(pricelist)s</strong>: %(field)s = "
 "%(value)s"
@@ -148,12 +153,6 @@ msgid "Old Value"
 msgstr ""
 
 #. module: product_pricelist_change_notify
-#. odoo-python
-#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
-msgid "Old price"
-msgstr ""
-
-#. module: product_pricelist_change_notify
 #: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
 msgid "Pending notification"
 msgstr ""
@@ -161,7 +160,6 @@ msgstr ""
 #. module: product_pricelist_change_notify
 #: model:ir.actions.act_window,name:product_pricelist_change_notify.action_pricelist_change_log
 #: model:ir.ui.menu,name:product_pricelist_change_notify.menu_pricelist_change_log
-#: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_list
 #: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
 msgid "Price change history"
 msgstr ""
@@ -169,20 +167,21 @@ msgstr ""
 #. module: product_pricelist_change_notify
 #. odoo-python
 #: code:addons/product_pricelist_change_notify/models/product_pricelist_item.py:0
+#, python-format
 msgid ""
 "Price change on pricelist <strong>%(pricelist)s</strong>: %(field)s from "
 "%(old)s to %(new)s"
 msgstr ""
 
 #. module: product_pricelist_change_notify
-#. odoo-python
-#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
-msgid "Price changes - %s"
+#: model:mail.template,subject:product_pricelist_change_notify.mail_template_price_change_digest
+msgid "Price changes - {{ object.display_name }}"
 msgstr ""
 
 #. module: product_pricelist_change_notify
 #. odoo-python
 #: code:addons/product_pricelist_change_notify/models/product_pricelist_item.py:0
+#, python-format
 msgid ""
 "Price rule deleted on pricelist <strong>%(pricelist)s</strong>: %(field)s = "
 "%(value)s"
@@ -206,13 +205,16 @@ msgid "Pricelist price change history"
 msgstr ""
 
 #. module: product_pricelist_change_notify
+#: model:mail.template,name:product_pricelist_change_notify.mail_template_price_change_digest
+msgid "Pricelist: Price Change Digest"
+msgstr ""
+
+#. module: product_pricelist_change_notify
 #: model:ir.actions.server,name:product_pricelist_change_notify.ir_cron_send_price_change_digest_ir_actions_server
 msgid "Pricelists: send daily price change digest"
 msgstr ""
 
 #. module: product_pricelist_change_notify
-#. odoo-python
-#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
 #: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__product_id
 msgid "Product"
 msgstr ""
@@ -228,14 +230,6 @@ msgid "Product Template"
 msgstr ""
 
 #. module: product_pricelist_change_notify
-#. odoo-python
-#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
-msgid "Today's price changes on pricelist <strong>%s</strong>:"
-msgstr ""
-
-#. module: product_pricelist_change_notify
-#. odoo-python
-#: code:addons/product_pricelist_change_notify/models/product_pricelist_change_log.py:0
 #: model:ir.model.fields,field_description:product_pricelist_change_notify.field_product_pricelist_change_log__change_type
 #: model_terms:ir.ui.view,arch_db:product_pricelist_change_notify.view_pricelist_change_log_search
 msgid "Type"
