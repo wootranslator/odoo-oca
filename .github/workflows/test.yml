@@ -1,0 +1,42 @@
+name: tests
+
+on:
+    pull_request:
+    push:
+        branches:
+            - "18.0"
+
+env:
+    ODOO_VERSION: "18.0"
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        services:
+            postgres:
+                image: postgres:15
+                env:
+                    POSTGRES_USER: odoo
+                    POSTGRES_PASSWORD: odoo
+                    POSTGRES_DB: postgres
+                ports:
+                    - 5432:5432
+                options: >-
+                    --health-cmd pg_isready
+                    --health-interval 10s
+                    --health-timeout 5s
+                    --health-retries 5
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Run module tests inside the official Odoo image
+              run: |
+                  docker run --rm --network host \
+                    -e HOST=localhost -e USER=odoo -e PASSWORD=odoo \
+                    -v "${{ github.workspace }}:/mnt/extra-addons" \
+                    "odoo:${{ env.ODOO_VERSION }}" \
+                    odoo -d test_ci \
+                      --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons \
+                      -i product_pricelist_change_notify \
+                      --test-tags=/product_pricelist_change_notify \
+                      --stop-after-init --log-level=test
