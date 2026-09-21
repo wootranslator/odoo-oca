@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_project_github_repo_user,project.github.repo user,model_project_github_repo,project.group_project_user,1,0,0,0
 access_project_github_repo_manager,project.github.repo manager,model_project_github_repo,project.group_project_manager,1,1,1,1
+access_project_github_sync_job_user,project.github.sync.job user,model_project_github_sync_job,project.group_project_user,1,0,0,0
+access_project_github_sync_job_manager,project.github.sync.job manager,model_project_github_sync_job,project.group_project_manager,1,1,0,1

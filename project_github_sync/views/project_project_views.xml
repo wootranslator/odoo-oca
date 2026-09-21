@@ -11,12 +11,21 @@
                     <p class="text-muted">
                         Optional. Add at least one repository to synchronize this
                         project's tasks with GitHub issues. Projects without
-                        repositories are not synchronized.
+                        repositories are not synchronized. GitHub → Odoo needs the
+                        webhook; Odoo → GitHub also needs the API token.
                     </p>
                     <field
                         name="github_repo_ids"
                         context="{'default_project_id': id}"
                     />
+                    <group invisible="not github_linked">
+                        <field name="github_push_new_tasks" />
+                        <field
+                            name="github_default_repo_id"
+                            invisible="not github_push_new_tasks"
+                            required="github_push_new_tasks"
+                        />
+                    </group>
                 </page>
             </xpath>
         </field>

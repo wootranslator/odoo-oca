@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 10:58+0000\n"
+"PO-Revision-Date: 2026-09-21 10:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,21 +21,89 @@ msgid "Active"
 msgstr ""
 
 #. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_project.py:0
+msgid ""
+"Add a GitHub repository to the project before publishing new tasks on "
+"GitHub."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__api_token
+msgid "Api Token"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__attempt_count
+msgid "Attempt Count"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields.selection,name:project_github_sync.selection__project_github_sync_job__kind__comment
+msgid "Comment"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__company_id
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__company_id
+msgid "Company"
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__create_uid
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__create_date
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__create_date
 msgid "Created on"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_project__github_default_repo_id
+msgid "Default repository"
 msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_mail_message__display_name
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__display_name
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__display_name
 #: model:ir.model.fields,field_description:project_github_sync.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_github_sync.field_project_task__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields.selection,name:project_github_sync.selection__project_github_sync_job__state__done
+msgid "Done"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__done_at
+msgid "Done At"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_project__github_push_new_tasks
+msgid ""
+"Every new task created in Odoo in this project is published as an issue in "
+"the default repository. Leave it off to keep Odoo tasks private and publish "
+"them one by one."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields.selection,name:project_github_sync.selection__project_github_sync_job__state__failed
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_github_sync_job_view_search
+msgid "Failed"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_task__github_sync_hash
+msgid ""
+"Fingerprint of the title, description and state known to be in sync with "
+"GitHub. Used to ignore echoes of our own changes."
 msgstr ""
 
 #. module: project_github_sync
@@ -84,8 +154,37 @@ msgid "GitHub repository linked to a project"
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.actions.server,name:project_github_sync.ir_cron_process_github_sync_jobs_ir_actions_server
+msgid "GitHub sync: push pending changes to GitHub"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.actions.act_window,name:project_github_sync.project_github_sync_job_action
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_job_ids
+#: model:ir.ui.menu,name:project_github_sync.menu_project_github_sync_job
+msgid "GitHub synchronization"
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_sync_job.py:0
+msgid "GitHub synchronization failed: %(error)s"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model,name:project_github_sync.model_project_github_sync_job
+msgid "GitHub synchronization job"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_sync_hash
+msgid "Github Sync Hash"
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_mail_message__id
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__id
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__id
 #: model:ir.model.fields,field_description:project_github_sync.field_project_project__id
 #: model:ir.model.fields,field_description:project_github_sync.field_project_task__id
 msgid "ID"
@@ -103,17 +202,30 @@ msgid "Issue updated on GitHub"
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__kind
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_github_sync_job_view_search
+msgid "Kind"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__last_error
+msgid "Last Error"
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_synced_at
 msgid "Last GitHub sync"
 msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__write_uid
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__write_date
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__write_date
 msgid "Last Updated on"
 msgstr ""
 
@@ -124,6 +236,7 @@ msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_project__github_linked
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_linked
 msgid "Linked to GitHub"
 msgstr ""
 
@@ -141,11 +254,24 @@ msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model,name:project_github_sync.model_mail_message
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__message_id
 msgid "Message"
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__next_attempt_at
+msgid "Next Attempt At"
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_sync_job.py:0
+msgid "No GitHub API token configured for this repository."
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model.fields,help:project_github_sync.field_project_project__github_linked
+#: model:ir.model.fields,help:project_github_sync.field_project_task__github_linked
 msgid ""
 "Only linked projects are synchronized with GitHub. Projects without any "
 "repository behave as regular projects."
@@ -156,12 +282,19 @@ msgstr ""
 msgid ""
 "Optional. Add at least one repository to synchronize this\n"
 "                        project's tasks with GitHub issues. Projects without\n"
-"                        repositories are not synchronized."
+"                        repositories are not synchronized. GitHub → Odoo needs the\n"
+"                        webhook; Odoo → GitHub also needs the API token."
 msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model.fields,help:project_github_sync.field_project_github_repo__webhook_url
 msgid "Payload URL to configure in the GitHub webhook settings."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields.selection,name:project_github_sync.selection__project_github_sync_job__state__pending
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_github_sync_job_view_search
+msgid "Pending"
 msgstr ""
 
 #. module: project_github_sync
@@ -171,8 +304,31 @@ msgid "Project"
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_project__github_push_new_tasks
+msgid "Publish new tasks on GitHub"
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__name
 msgid "Repository"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_project__github_default_repo_id
+msgid "Repository where new tasks are published."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_task__github_repo_id
+msgid ""
+"Repository where this task is published as an issue. Setting it on a task "
+"without issue publishes the task on GitHub."
+msgstr ""
+
+#. module: project_github_sync
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_github_sync_job_view_form
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_github_sync_job_view_list
+msgid "Retry"
 msgstr ""
 
 #. module: project_github_sync
@@ -183,8 +339,28 @@ msgid ""
 msgstr ""
 
 #. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_sync_job.py:0
+msgid "Someone"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__state
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_github_sync_job_view_search
+msgid "State"
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model,name:project_github_sync.model_project_task
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_sync_job__task_id
+#: model:ir.model.fields.selection,name:project_github_sync.selection__project_github_sync_job__kind__task
 msgid "Task"
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_sync_job.py:0
+msgid "The GitHub issue does not exist yet."
 msgstr ""
 
 #. module: project_github_sync
@@ -202,6 +378,25 @@ msgid ""
 msgstr ""
 
 #. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_project.py:0
+msgid "The default repository must belong to the project."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_github_sync_job__next_attempt_at
+msgid "The job is not processed before this date."
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_task.py:0
+msgid ""
+"The task '%(task)s' is linked to a GitHub repository of another project. "
+"Unlink it before moving it."
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model.constraint,message:project_github_sync.constraint_mail_message_github_comment_uniq
 msgid "This GitHub comment is already mirrored in the chatter."
 msgstr ""
@@ -214,6 +409,25 @@ msgstr ""
 #. module: project_github_sync
 #: model:ir.model.constraint,message:project_github_sync.constraint_project_github_repo_name_uniq
 msgid "This GitHub repository is already linked to a project."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.constraint,message:project_github_sync.constraint_project_github_sync_job_comment_uniq
+msgid "This message is already queued for GitHub."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.constraint,message:project_github_sync.constraint_project_github_sync_job_pending_task_uniq
+msgid "This task already has a pending GitHub synchronization."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_github_repo__api_token
+msgid ""
+"Token used to write on GitHub (create and update issues, post comments). Use"
+" a fine-grained personal access token limited to this repository with read "
+"and write access to Issues. Without a token, Odoo only receives changes from"
+" GitHub."
 msgstr ""
 
 #. module: project_github_sync

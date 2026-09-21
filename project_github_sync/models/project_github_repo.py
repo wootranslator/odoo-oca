@@ -64,6 +64,19 @@ class ProjectGithubRepo(models.Model):
         compute="_compute_webhook_url",
         help="Payload URL to configure in the GitHub webhook settings.",
     )
+    api_token = fields.Char(
+        copy=False,
+        help="Token used to write on GitHub (create and update issues, post "
+        "comments). Use a fine-grained personal access token limited to this "
+        "repository with read and write access to Issues. Without a token, "
+        "Odoo only receives changes from GitHub.",
+        groups="project.group_project_manager",
+    )
+    company_id = fields.Many2one(
+        related="project_id.company_id",
+        store=True,
+        index=True,
+    )
     active = fields.Boolean(default=True)
 
     _name_uniq = models.Constraint(

@@ -42,7 +42,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [product_pricelist_change_notify](product_pricelist_change_notify/) | 19.0.1.0.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Track price changes on pricelist items and send a daily digest
-[project_github_sync](project_github_sync/) | 19.0.1.0.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Optionally link Odoo projects with GitHub repositories and synchronize tasks with issues
+[project_github_sync](project_github_sync/) | 19.0.1.0.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Optionally link Odoo projects with GitHub repositories and synchronize tasks with issues in both directions
 [stock_removal_location_by_priority](stock_removal_location_by_priority/) | 19.0.1.0.0 |  | Establish a removal priority on stock locations.
 
 [//]: # (end addons)

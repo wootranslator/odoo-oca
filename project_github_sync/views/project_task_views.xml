@@ -6,13 +6,37 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page name="github" string="GitHub" invisible="not github_repo_id">
+                <page
+                    name="github"
+                    string="GitHub"
+                    invisible="not github_linked and not github_repo_id"
+                >
                     <group>
-                        <field name="github_repo_id" />
+                        <field name="github_linked" invisible="True" />
+                        <field
+                            name="github_repo_id"
+                            domain="[('project_id', '=', project_id)]"
+                            readonly="github_issue_number"
+                        />
                         <field name="github_issue_number" />
                         <field name="github_url" widget="url" />
                         <field name="github_synced_at" />
                     </group>
+                    <field name="github_job_ids">
+                        <list
+                            create="0"
+                            edit="0"
+                            delete="0"
+                            decoration-danger="state == 'failed'"
+                            decoration-muted="state == 'done'"
+                        >
+                            <field name="create_date" />
+                            <field name="kind" />
+                            <field name="state" widget="badge" />
+                            <field name="attempt_count" />
+                            <field name="last_error" />
+                        </list>
+                    </field>
                 </page>
             </xpath>
         </field>

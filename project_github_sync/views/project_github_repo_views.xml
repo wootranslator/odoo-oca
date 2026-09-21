@@ -8,6 +8,7 @@
                 <field name="name" placeholder="my-org/my-repo" />
                 <field name="webhook_url" widget="CopyClipboardChar" />
                 <field name="webhook_secret" widget="CopyClipboardChar" />
+                <field name="api_token" password="True" />
                 <field name="active" column_invisible="True" />
             </list>
         </field>
