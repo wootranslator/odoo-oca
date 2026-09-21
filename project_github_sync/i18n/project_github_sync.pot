@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 09:58+0000\n"
+"PO-Revision-Date: 2026-09-21 09:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,6 +31,7 @@ msgid "Created on"
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_mail_message__display_name
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__display_name
 #: model:ir.model.fields,field_description:project_github_sync.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_github_sync.field_project_task__display_name
@@ -49,6 +52,12 @@ msgstr ""
 #. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_url
 msgid "GitHub URL"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_mail_mail__github_comment_id
+#: model:ir.model.fields,field_description:project_github_sync.field_mail_message__github_comment_id
+msgid "GitHub comment ID"
 msgstr ""
 
 #. module: project_github_sync
@@ -77,10 +86,22 @@ msgid "GitHub repository linked to a project"
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_mail_message__id
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__id
 #: model:ir.model.fields,field_description:project_github_sync.field_project_project__id
 #: model:ir.model.fields,field_description:project_github_sync.field_project_task__id
 msgid "ID"
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_repo.py:0
+msgid "Invalid repository name '%(name)s'. Use the 'owner/repo' format."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_updated_at
+msgid "Issue updated on GitHub"
 msgstr ""
 
 #. module: project_github_sync
@@ -99,8 +120,30 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_task__github_updated_at
+msgid "Last update time reported by GitHub. Older events are discarded."
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_project__github_linked
 msgid "Linked to GitHub"
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_repo.py:0
+msgid "Malformed comment payload."
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_repo.py:0
+msgid "Malformed issue payload."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model,name:project_github_sync.model_mail_message
+msgid "Message"
 msgstr ""
 
 #. module: project_github_sync
@@ -119,6 +162,11 @@ msgid ""
 msgstr ""
 
 #. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_github_repo__webhook_url
+msgid "Payload URL to configure in the GitHub webhook settings."
+msgstr ""
+
+#. module: project_github_sync
 #: model:ir.model,name:project_github_sync.model_project_project
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__project_id
 msgid "Project"
@@ -131,12 +179,33 @@ msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model.fields,help:project_github_sync.field_project_github_repo__webhook_secret
-msgid "Secret used to validate the signature of GitHub webhook payloads."
+msgid ""
+"Secret used to validate the signature of GitHub webhook payloads. Paste the "
+"same value in the webhook settings on GitHub."
 msgstr ""
 
 #. module: project_github_sync
 #: model:ir.model,name:project_github_sync.model_project_task
 msgid "Task"
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_repo.py:0
+msgid "The GitHub issue was deleted."
+msgstr ""
+
+#. module: project_github_sync
+#. odoo-python
+#: code:addons/project_github_sync/models/project_github_repo.py:0
+msgid ""
+"The GitHub repository '%(name)s' is already linked to a project (repository "
+"names are case-insensitive)."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.constraint,message:project_github_sync.constraint_mail_message_github_comment_uniq
+msgid "This GitHub comment is already mirrored in the chatter."
 msgstr ""
 
 #. module: project_github_sync
@@ -166,6 +235,11 @@ msgstr ""
 #. module: project_github_sync
 #: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__webhook_secret
 msgid "Webhook Secret"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__webhook_url
+msgid "Webhook Url"
 msgstr ""
 
 #. module: project_github_sync

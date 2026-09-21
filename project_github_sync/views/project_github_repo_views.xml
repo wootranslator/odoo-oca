@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <list editable="bottom">
                 <field name="name" placeholder="my-org/my-repo" />
-                <field name="webhook_secret" password="True" />
+                <field name="webhook_url" widget="CopyClipboardChar" />
+                <field name="webhook_secret" widget="CopyClipboardChar" />
                 <field name="active" column_invisible="True" />
             </list>
         </field>

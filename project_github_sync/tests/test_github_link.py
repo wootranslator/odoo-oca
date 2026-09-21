@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from psycopg2 import IntegrityError
 
+from odoo.exceptions import ValidationError
 from odoo.tests import TransactionCase
 from odoo.tools import mute_logger
 
@@ -26,6 +27,37 @@ class TestGithubLink(TransactionCase):
         )
         repo.unlink()
         self.assertFalse(self.project.github_linked)
+
+    def test_secret_is_generated(self):
+        repo = self.repo_model.create(
+            {"name": "org/repo", "project_id": self.project.id}
+        )
+        self.assertGreaterEqual(len(repo.webhook_secret), 32)
+        other = self.repo_model.create(
+            {"name": "org/other", "project_id": self.project.id}
+        )
+        self.assertNotEqual(repo.webhook_secret, other.webhook_secret)
+
+    def test_webhook_url(self):
+        repo = self.repo_model.create(
+            {"name": "org/repo", "project_id": self.project.id}
+        )
+        self.assertTrue(repo.webhook_url.endswith("/project_github_sync/webhook"))
+
+    def test_invalid_repo_names(self):
+        for name in ("repo", "org/", "/repo", "org/re po", "org/repo/extra", ""):
+            with self.subTest(name=name), self.assertRaises(ValidationError):
+                self.repo_model.create({"name": name, "project_id": self.project.id})
+
+    def test_repo_name_is_case_insensitive_unique(self):
+        self.repo_model.create({"name": "Org/Repo", "project_id": self.project.id})
+        with self.assertRaises(ValidationError):
+            self.repo_model.create({"name": "org/repo", "project_id": self.project.id})
+
+    def test_underscore_is_not_a_wildcard(self):
+        self.repo_model.create({"name": "org/my_repo", "project_id": self.project.id})
+        # would collide if "_" were treated as a LIKE wildcard
+        self.repo_model.create({"name": "org/myXrepo", "project_id": self.project.id})
 
     @mute_logger("odoo.sql_db")
     def test_repo_linked_to_one_project_only(self):

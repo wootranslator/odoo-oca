@@ -10,7 +10,7 @@
     "author": "Javier Sánchez de Pedro, Odoo Community Association (OCA)",
     "maintainers": ["wootranslator"],
     "license": "AGPL-3",
-    "depends": ["project"],
+    "depends": ["mail", "project"],
     "data": [
         "security/ir.model.access.csv",
         "views/project_github_repo_views.xml",
