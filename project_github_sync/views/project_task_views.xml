@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_task_view_form" model="ir.ui.view">
+        <field name="name">project.task.form.github.sync</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="github" string="GitHub" invisible="not github_repo_id">
+                    <group>
+                        <field name="github_repo_id" />
+                        <field name="github_issue_number" />
+                        <field name="github_url" widget="url" />
+                        <field name="github_synced_at" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

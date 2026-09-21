@@ -17,6 +17,7 @@ proposed to OCA from a temporary fork of the target repository, not from here.
 | ------ | ---- | --------------------- | -------- | ---------------- | ------ |
 | [product_pricelist_change_notify](product_pricelist_change_notify/) | New contribution | [OCA/sale-workflow](https://github.com/OCA/sale-workflow) | [17.0](https://github.com/wootranslator/odoo-oca/tree/17.0), [18.0](https://github.com/wootranslator/odoo-oca/tree/18.0), [19.0](https://github.com/wootranslator/odoo-oca/tree/19.0) | Javier Sánchez de Pedro | Ready, not proposed yet |
 | [stock_removal_location_by_priority](stock_removal_location_by_priority/) | Version migration (18.0 → 19.0) | [OCA/stock-logistics-warehouse](https://github.com/OCA/stock-logistics-warehouse) | [19.0](https://github.com/wootranslator/odoo-oca/tree/19.0) | ForgeFlow (migrated by Javier Sánchez de Pedro) | Ready, waiting for the OCA CLA acknowledgement |
+| [project_github_sync](project_github_sync/) | New contribution | [OCA/project](https://github.com/OCA/project) | [19.0](https://github.com/wootranslator/odoo-oca/tree/19.0) | Javier Sánchez de Pedro | In development (alpha) |
 
 For migrations, the original authors and contributors are kept untouched in the
 manifest and in the readme fragments.
@@ -41,6 +42,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [product_pricelist_change_notify](product_pricelist_change_notify/) | 19.0.1.0.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Track price changes on pricelist items and send a daily digest
+[project_github_sync](project_github_sync/) | 19.0.1.0.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Optionally link Odoo projects with GitHub repositories and synchronize tasks with issues
 [stock_removal_location_by_priority](stock_removal_location_by_priority/) | 19.0.1.0.0 |  | Establish a removal priority on stock locations.
 
 [//]: # (end addons)

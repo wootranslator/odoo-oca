@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_github_repo_view_list" model="ir.ui.view">
+        <field name="name">project.github.repo.list</field>
+        <field name="model">project.github.repo</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name" placeholder="my-org/my-repo" />
+                <field name="webhook_secret" password="True" />
+                <field name="active" column_invisible="True" />
+            </list>
+        </field>
+    </record>
+</odoo>

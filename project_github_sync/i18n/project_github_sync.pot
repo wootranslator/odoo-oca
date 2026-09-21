@@ -1,0 +1,176 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_github_sync
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 09:15+0000\n"
+"PO-Revision-Date: 2026-09-21 09:15+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__active
+msgid "Active"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__display_name
+#: model:ir.model.fields,field_description:project_github_sync.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_github_repo__name
+msgid "Full repository name, e.g. 'my-org/my-repo'."
+msgstr ""
+
+#. module: project_github_sync
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_project_view_form
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_task_view_form
+msgid "GitHub"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_url
+msgid "GitHub URL"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_issue_id
+msgid "GitHub issue ID"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_issue_number
+msgid "GitHub issue number"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_project__github_repo_ids
+msgid "GitHub repositories"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_repo_id
+msgid "GitHub repository"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model,name:project_github_sync.model_project_github_repo
+msgid "GitHub repository linked to a project"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__id
+#: model:ir.model.fields,field_description:project_github_sync.field_project_project__id
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_task__github_synced_at
+msgid "Last GitHub sync"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_project__github_linked
+msgid "Linked to GitHub"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_project__github_linked
+msgid ""
+"Only linked projects are synchronized with GitHub. Projects without any "
+"repository behave as regular projects."
+msgstr ""
+
+#. module: project_github_sync
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_project_view_form
+msgid ""
+"Optional. Add at least one repository to synchronize this\n"
+"                        project's tasks with GitHub issues. Projects without\n"
+"                        repositories are not synchronized."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model,name:project_github_sync.model_project_project
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__project_id
+msgid "Project"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__name
+msgid "Repository"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_github_repo__webhook_secret
+msgid "Secret used to validate the signature of GitHub webhook payloads."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model,name:project_github_sync.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.constraint,message:project_github_sync.constraint_project_task_github_issue_uniq
+msgid "This GitHub issue is already linked to another task."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.constraint,message:project_github_sync.constraint_project_github_repo_name_uniq
+msgid "This GitHub repository is already linked to a project."
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,help:project_github_sync.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"            #tags Set tags on the task\n"
+"            @user Assign the task to a user\n"
+"            ! Set the task a medium priority\n"
+"            !! Set the task a high priority\n"
+"            !!! Set the task a urgent priority\n"
+"\n"
+"            Make sure to use the right format and order e.g. Improve the configuration screen #feature #v16 @Mitchell !"
+msgstr ""
+
+#. module: project_github_sync
+#: model:ir.model.fields,field_description:project_github_sync.field_project_github_repo__webhook_secret
+msgid "Webhook Secret"
+msgstr ""
+
+#. module: project_github_sync
+#: model_terms:ir.ui.view,arch_db:project_github_sync.project_github_repo_view_list
+msgid "my-org/my-repo"
+msgstr ""

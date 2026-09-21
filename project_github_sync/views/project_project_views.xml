@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_project_view_form" model="ir.ui.view">
+        <field name="name">project.project.form.github.sync</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="github" string="GitHub">
+                    <field name="github_linked" invisible="True" />
+                    <p class="text-muted">
+                        Optional. Add at least one repository to synchronize this
+                        project's tasks with GitHub issues. Projects without
+                        repositories are not synchronized.
+                    </p>
+                    <field
+                        name="github_repo_ids"
+                        context="{'default_project_id': id}"
+                    />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
