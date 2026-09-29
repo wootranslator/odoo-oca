@@ -92,7 +92,7 @@ Contributors
 ------------
 
 - Javier Sánchez de Pedro <sanchezdepedro85@gmail.com>
-  (`sanchezdepedro.com <https://sanchezdepedro.com>`__)
+  (`sanchezdepedro.com <https://www.sanchezdepedro.com>`__)
 
 Maintainers
 -----------
