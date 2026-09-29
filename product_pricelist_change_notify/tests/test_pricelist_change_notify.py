@@ -1,4 +1,4 @@
-# Copyright 2026 Javier Sánchez de Pedro <https://sanchezdepedro.com>
+# Copyright 2026 Javier Sánchez de Pedro <https://www.sanchezdepedro.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo.tests.common import TransactionCase
 
@@ -143,6 +143,72 @@ class TestPricelistChangeNotify(TransactionCase):
         self.assertFalse(log.product_id)
         self.assertFalse(log.categ_id)
         self.assertEqual(log._get_target_display(), "All products")
+
+    def test_field_label_is_computed_not_stored(self):
+        # Storing the label would freeze it in the language of whoever made
+        # the change; the digest is read by other people, in other languages.
+        log_model = self.env["product.pricelist.change.log"]
+        self.assertFalse(log_model._fields["field_label"].store)
+
+        self.env["product.pricelist.item"].create(
+            {
+                "pricelist_id": self.pricelist.id,
+                "applied_on": "3_global",
+                "compute_price": "percentage",
+                "percent_price": 10.0,
+            }
+        )
+        log = log_model.search([("pricelist_id", "=", self.pricelist.id)])
+        expected = self.env["product.pricelist.item"].fields_get(["percent_price"])[
+            "percent_price"
+        ]["string"]
+        self.assertEqual(log.field_name, "percent_price")
+        self.assertEqual(log.field_label, expected)
+
+    def test_digest_is_rendered_once_per_recipient_language(self):
+        # Recipients must differ from self.env.user: message_notify() skips
+        # the author of the action.
+        self.env["res.lang"]._activate_lang("es_ES")
+        recipient_en = self.env["res.users"].create(
+            {
+                "name": "Digest Recipient EN",
+                "login": "digest_recipient_en_test",
+                "email": "digest_recipient_en_test@example.com",
+                "lang": "en_US",
+            }
+        )
+        recipient_es = self.env["res.users"].create(
+            {
+                "name": "Digest Recipient ES",
+                "login": "digest_recipient_es_test",
+                "email": "digest_recipient_es_test@example.com",
+                "lang": "es_ES",
+            }
+        )
+        self.pricelist.price_change_notify_user_ids = [
+            (6, 0, [recipient_en.id, recipient_es.id])
+        ]
+        self.env["product.pricelist.item"].create(
+            {
+                "pricelist_id": self.pricelist.id,
+                "applied_on": "3_global",
+                "compute_price": "fixed",
+                "fixed_price": 42.0,
+            }
+        )
+        messages_before = self.env["mail.message"].search([])
+
+        self.env["product.pricelist.change.log"]._cron_send_price_change_digest()
+
+        messages = self.env["mail.message"].search(
+            [("id", "not in", messages_before.ids)]
+        )
+        # One rendering per language, not one for everybody in the cron's.
+        self.assertEqual(len(messages), 2)
+        self.assertEqual(
+            messages.partner_ids,
+            recipient_en.partner_id | recipient_es.partner_id,
+        )
 
     def test_percentage_rule_logs_percent_price_field(self):
         self.env["product.pricelist.item"].create(

@@ -1,4 +1,4 @@
-# Copyright 2026 Javier Sánchez de Pedro <https://sanchezdepedro.com>
+# Copyright 2026 Javier Sánchez de Pedro <https://www.sanchezdepedro.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import logging
 
@@ -37,7 +37,7 @@ class PricelistChangeLog(models.Model):
         CHANGE_TYPES, string="Type", required=True, default="write", index=True
     )
     field_name = fields.Char(required=True)
-    field_label = fields.Char(required=True)
+    field_label = fields.Char(compute="_compute_field_label")
     old_value = fields.Char()
     new_value = fields.Char()
 
@@ -48,6 +48,30 @@ class PricelistChangeLog(models.Model):
 
     notified = fields.Boolean(default=False, index=True)
     notified_date = fields.Datetime()
+
+    @api.depends("field_name")
+    def _compute_field_label(self):
+        """Resolve the label from the stored technical name, not the other way.
+
+        Storing the label would freeze it in the language of whoever made the
+        change; computing it means every reader gets it in their own language.
+        """
+        item_model = self.env["product.pricelist.item"]
+        wanted = {
+            log.field_name for log in self if log.field_name in item_model._fields
+        }
+        # fields_get(), not _fields[...].string: the latter returns the English
+        # source term, ignoring the catalog.
+        labels = (
+            {
+                name: descr["string"]
+                for name, descr in item_model.fields_get(list(wanted)).items()
+            }
+            if wanted
+            else {}
+        )
+        for log in self:
+            log.field_label = labels.get(log.field_name) or log.field_name
 
     def _get_target_display(self):
         self.ensure_one()
@@ -107,22 +131,33 @@ class PricelistChangeLog(models.Model):
                 with self.env.cr.savepoint():
                     recipient_users = pricelist.price_change_notify_user_ids
                     if recipient_users:
-                        subject = template._render_field("subject", pricelist.ids)[
-                            pricelist.id
-                        ]
-                        body = template._render_field("body_html", pricelist.ids)[
-                            pricelist.id
-                        ]
                         # Sender from the company's real domain (with authenticated
                         # SMTP), not the odoobot@*.odoo.com address that goes to spam.
                         company = pricelist.company_id or self.env.company
                         email_from = company.email_formatted or company.email or None
-                        self.env["mail.thread"].message_notify(
-                            partner_ids=recipient_users.partner_id.ids,
-                            subject=subject,
-                            body=body,
-                            email_from=email_from,
+                        # Render once per language, not once per pricelist: the
+                        # template pulls translated field labels and selection
+                        # labels out of the catalog, so a single rendering would
+                        # send every recipient the cron user's language.
+                        by_lang = recipient_users.grouped(
+                            lambda user: user.lang or self.env.lang
                         )
+                        for lang, users in by_lang.items():
+                            localized = template.with_context(lang=lang)
+                            subject = localized._render_field("subject", pricelist.ids)[
+                                pricelist.id
+                            ]
+                            body = localized._render_field("body_html", pricelist.ids)[
+                                pricelist.id
+                            ]
+                            self.env["mail.thread"].with_context(
+                                lang=lang
+                            ).message_notify(
+                                partner_ids=users.partner_id.ids,
+                                subject=subject,
+                                body=body,
+                                email_from=email_from,
+                            )
 
                     logs.write(
                         {
