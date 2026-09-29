@@ -1,1 +1,1 @@
-- Javier Sánchez de Pedro \<<sanchezdepedro85@gmail.com>\> ([sanchezdepedro.com](https://sanchezdepedro.com))
+- Javier Sánchez de Pedro \<<sanchezdepedro85@gmail.com>\> ([sanchezdepedro.com](https://www.sanchezdepedro.com))

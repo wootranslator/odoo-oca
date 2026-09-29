@@ -1,4 +1,4 @@
-# Copyright 2026 Javier Sánchez de Pedro <https://sanchezdepedro.com>
+# Copyright 2026 Javier Sánchez de Pedro <https://www.sanchezdepedro.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from markupsafe import Markup
 
@@ -30,7 +30,9 @@ class PricelistItem(models.Model):
     _inherit = "product.pricelist.item"
 
     def _get_price_change_notify_field_label(self, field_name):
-        return self._fields[field_name].string
+        # fields_get(), not _fields[...].string: the latter returns the English
+        # source term, so the chatter message would ignore the user's language.
+        return self.fields_get([field_name])[field_name]["string"]
 
     def _format_price_change_notify_value(self, field_name, value):
         field = self._fields[field_name]
@@ -71,7 +73,6 @@ class PricelistItem(models.Model):
             "applied_on": self.applied_on,
             "change_type": change_type,
             "field_name": field_name,
-            "field_label": field_label,
             "old_value": formatted_old,
             "new_value": formatted_new,
             "user_id": self.env.user.id,
