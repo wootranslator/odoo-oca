@@ -1,4 +1,4 @@
-# Copyright 2026 Javier Sánchez de Pedro <https://sanchezdepedro.com>
+# Copyright 2026 Javier Sánchez de Pedro <https://www.sanchezdepedro.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from datetime import timedelta
 from unittest.mock import patch
