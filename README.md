@@ -16,6 +16,7 @@ proposed to OCA from a temporary fork of the target repository, not from here.
 | Module | Type | Target OCA repository | Versions | Original authors | Status |
 | ------ | ---- | --------------------- | -------- | ---------------- | ------ |
 | [product_pricelist_change_notify](product_pricelist_change_notify/) | New contribution | [OCA/sale-workflow](https://github.com/OCA/sale-workflow) | [17.0](https://github.com/wootranslator/odoo-oca/tree/17.0), [18.0](https://github.com/wootranslator/odoo-oca/tree/18.0), [19.0](https://github.com/wootranslator/odoo-oca/tree/19.0) | Javier Sánchez de Pedro | Ready, not proposed yet |
+| [wacom_stu_signature](wacom_stu_signature/) | New contribution | [OCA/stock-logistics-workflow](https://github.com/OCA/stock-logistics-workflow) | [18.0](https://github.com/wootranslator/odoo-oca/tree/18.0) | Javier Sánchez de Pedro | In production; not proposed yet (needs JS tests) |
 | [stock_removal_location_by_priority](stock_removal_location_by_priority/) | Version migration (18.0 → 19.0) | [OCA/stock-logistics-warehouse](https://github.com/OCA/stock-logistics-warehouse) | [19.0](https://github.com/wootranslator/odoo-oca/tree/19.0) | ForgeFlow (migrated by Javier Sánchez de Pedro) | Ready, waiting for the OCA CLA acknowledgement |
 
 For migrations, the original authors and contributors are kept untouched in the
@@ -41,6 +42,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [product_pricelist_change_notify](product_pricelist_change_notify/) | 18.0.1.1.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Track price changes on pricelist items and send a daily digest
+[wacom_stu_signature](wacom_stu_signature/) | 18.0.1.0.0 | <a href='https://github.com/wootranslator'><img src='https://github.com/wootranslator.png' width='32' height='32' style='border-radius:50%;' alt='wootranslator'/></a> | Capture signatures on a Wacom STU signature pad
 
 [//]: # (end addons)
 <!-- prettier-ignore-end -->

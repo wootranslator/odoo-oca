@@ -1,0 +1,3 @@
+# Wacom's STU SDK is proprietary and is not redistributed with this module.
+# Copy wgssStuSdk.js here from the Wacom STU SDK (see readme/INSTALL.md).
+wgssStuSdk.js

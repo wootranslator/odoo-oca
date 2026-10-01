@@ -1,0 +1,175 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* wacom_stu_signature
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20260908\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-01 12:07+0000\n"
+"PO-Revision-Date: 2026-10-01 12:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Accept"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Ask your administrator to copy"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Cancel"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Clear"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Connect the STU pad via USB and click"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Connecting to the Wacom STU pad…"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Download the"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Restart the browser and try again"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Retry"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Run the SigCaptX MSI installer"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "STU SDK for Windows Desktop"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "SigCaptX is not installed or is not running."
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid ""
+"Sign directly on the Wacom pad. The signature appears here in real time."
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/js/wacom_sigcaptx.js:0
+msgid "Sign here"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Sign with the mouse"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Signature"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "The Wacom STU SDK is not installed on the server."
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid ""
+"To sign on the Wacom pad, Wacom's SigCaptX service must be installed on this"
+" PC."
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Wacom pad not found."
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Waiting for the SigCaptX service"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "Waiting for the signature on the pad…"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "as described in the module documentation."
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "from developer.wacom.com"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "into"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "wacom_stu_signature/static/lib/wacom/"
+msgstr ""
+
+#. module: wacom_stu_signature
+#. odoo-javascript
+#: code:addons/wacom_stu_signature/static/src/xml/wacom_signature_dialog.xml:0
+msgid "wgssStuSdk.js"
+msgstr ""

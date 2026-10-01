@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Javier Sánchez de Pedro <https://www.sanchezdepedro.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<templates xml:space="preserve">
+
+    <t t-name="wacom_stu_signature.WacomSignatureDialog">
+        <Dialog title.translate="Signature" size="'md'">
+            <t t-set-slot="footer">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <button
+                        class="btn btn-secondary"
+                        t-on-click="onClear"
+                        t-att-disabled="state.status !== 'ready'"
+                    >
+                        Clear
+                    </button>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-secondary" t-on-click="onCancel">
+                            Cancel
+                        </button>
+                        <button
+                            class="btn btn-primary"
+                            t-on-click="onAccept"
+                            t-att-disabled="!state.hasSigned"
+                        >
+                            Accept
+                        </button>
+                    </div>
+                </div>
+            </t>
+
+            <div class="wacom-stu-dialog p-1">
+                <!-- Connecting -->
+                <t t-if="state.status === 'connecting'">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center p-4"
+                        style="min-height:220px"
+                    >
+                        <div class="spinner-border text-primary mb-3" role="status" />
+                        <p class="text-muted mb-0">Connecting to the Wacom STU pad…</p>
+                        <small
+                            class="text-muted"
+                        >Waiting for the SigCaptX service</small>
+                    </div>
+                </t>
+
+                <!-- Wacom STU SDK file not deployed on the server -->
+                <t t-if="state.status === 'no_sdk'">
+                    <div class="alert alert-warning mb-2">
+                        <strong
+                        >The Wacom STU SDK is not installed on the server.</strong>
+                        <p class="mb-0 mt-2">
+                            Ask your administrator to copy
+                            <code>wgssStuSdk.js</code>
+                            into
+                            <code>wacom_stu_signature/static/lib/wacom/</code>
+                            as described in the module documentation.
+                        </p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button
+                            class="btn btn-primary btn-sm"
+                            t-on-click="onRetry"
+                        >Retry</button>
+                        <button
+                            class="btn btn-secondary btn-sm"
+                            t-on-click="onFallback"
+                        >Sign with the mouse</button>
+                    </div>
+                </t>
+
+                <!-- SigCaptX not installed -->
+                <t t-if="state.status === 'no_service'">
+                    <div class="alert alert-warning mb-2">
+                        <strong>SigCaptX is not installed or is not running.</strong>
+                        <p class="mb-1 mt-2">
+                            To sign on the Wacom pad, Wacom's SigCaptX service must be installed on this PC.
+                        </p>
+                        <ol class="mb-2 ps-3">
+                            <li>
+                                Download the
+                                <strong>STU SDK for Windows Desktop</strong>
+                                from developer.wacom.com
+                            </li>
+                            <li>Run the SigCaptX MSI installer</li>
+                            <li>Restart the browser and try again</li>
+                        </ol>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button
+                            class="btn btn-primary btn-sm"
+                            t-on-click="onRetry"
+                        >Retry</button>
+                        <button
+                            class="btn btn-secondary btn-sm"
+                            t-on-click="onFallback"
+                        >Sign with the mouse</button>
+                    </div>
+                </t>
+
+                <!-- SigCaptX ready but no device -->
+                <t t-if="state.status === 'no_device'">
+                    <div class="alert alert-warning mb-2">
+                        <strong>Wacom pad not found.</strong>
+                        Connect the STU pad via USB and click
+                        <strong>Retry</strong>.
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button
+                            class="btn btn-primary btn-sm"
+                            t-on-click="onRetry"
+                        >Retry</button>
+                        <button
+                            class="btn btn-secondary btn-sm"
+                            t-on-click="onFallback"
+                        >Sign with the mouse</button>
+                    </div>
+                </t>
+
+                <!-- Ready: show preview canvas -->
+                <t t-if="state.status === 'ready'">
+                    <div class="d-flex flex-column align-items-center gap-2">
+                        <div
+                            class="alert alert-info py-2 px-3 mb-0 w-100 text-center"
+                            style="font-size:13px"
+                        >
+                            Sign directly on the Wacom pad. The signature appears here in real time.
+                        </div>
+                        <div
+                            class="border rounded bg-white position-relative"
+                            style="width:640px;max-width:100%;"
+                        >
+                            <canvas
+                                t-ref="previewCanvas"
+                                width="640"
+                                height="200"
+                                style="display:block;width:100%;height:auto;touch-action:none;"
+                            />
+                            <t t-if="!state.hasSigned">
+                                <div
+                                    class="position-absolute w-100 text-center text-muted"
+                                    style="bottom:10px;font-size:12px;pointer-events:none;"
+                                >
+                                    Waiting for the signature on the pad…
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </Dialog>
+    </t>
+
+</templates>
